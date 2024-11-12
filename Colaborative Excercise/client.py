@@ -1,3 +1,5 @@
+# This is the original version. The code is designed to run on a live feed from a camera. 
+
 import cv2
 import socket
 from ultralytics import YOLO
@@ -35,26 +37,26 @@ def detection(model, cam_id=1, host='192.168.0.107', port=5000):
             # If 'p' is pressed, capture the frame for analysis
             if key == ord('p'):
                 # Detect objects in the captured frame
-                # Confidence threshold is set to 80% to reduce false positives
-                results = yoloModel(frame, conf=0.8) 
+                results = yoloModel(frame, conf=0.8)
 
                 # Check if any objects are detected
-                if results[0].cans:
-                    # Find the top-left most can
-                    top_left_can = None
-                    min_y, min_x = float('inf'), float('inf') # Initialize to infinity
+                if results[0].boxes:
+                    # Initialize the top-left box and minimum x, y values
+                    top_left_box = None
+                    min_x, min_y = float('inf'), float('inf')
 
-                    # Loop through all detected cans to find the one with the smallest y and x coordinates
-                    for can in results[0].cans: 
-                        x1, y1, _, _ = can.xyxy[0].int().tolist()
-                        # If the current can has a smaller y coordinate or the same y coordinate but smaller x coordinate
-                        if (y1 < min_y) or (y1 == min_y and x1 < min_x):
-                            min_y, min_x = y1, x1
-                            top_left_can = can
+                    # First, find the box with the smallest x-coordinate, then y-coordinate 
+                    for box in results[0].boxes:
+                        x1, y1, x2, y2 = box.xyxy[0].int().tolist()
+                        
+                        # Update top-left box based on x, and then y if x is the same
+                        if (x1 < min_x) or (x1 == min_x and y1 < min_y):
+                            min_x, min_y = x1, y1
+                            top_left_box = (x1, y1)
 
-                    # If a top-left can is found
-                    if top_left_can:
-                        coordinates = f"{min_x},{min_y}"
+                    if top_left_box:
+                        x, y = top_left_box
+                        coordinates = f"{x},{y}"
                         
                         # Send the coordinates to the server
                         client_socket.sendall(coordinates.encode())
@@ -81,4 +83,4 @@ def detection(model, cam_id=1, host='192.168.0.107', port=5000):
         print("Client connection closed.")
 
 # Run the detection with server communication
-detection('best_mat.pt')
+detection('best.pt')

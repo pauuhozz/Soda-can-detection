@@ -37,4 +37,4 @@ def detection(model, cam_id=1):
     cam.release()
     cv2.destroyAllWindows()
 
-detection('best_mat.pt')
+detection('best.pt')
