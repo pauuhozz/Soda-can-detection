@@ -26,7 +26,7 @@ This project uses a video feed and a YOLOv8 model to detect objects. There were 
 - Server.py: Server script to received and print the coordinates of the top mostleft soda can.
 - TestSampleImages: This program was added for reviewing purposes. This program works the same as the client program, but instead of using a live webcam, images are directly loaded. These images are available in the same folder. Also, socket connection was commented to make the reviewing easier. 
 - best.pt: YOLO model to detect soda cans.
-  * Model was trained using Roboflow
+  * Model was trained using Roboflow: https://app.roboflow.com/erasmus-eo69k/soda-cans-vivjo/2
   * Background images with no soda cans were added to avoid false positives.
 
 

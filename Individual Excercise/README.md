@@ -22,7 +22,7 @@ This project uses a video feed and a YOLOv8 model to detect soda cans in real ti
 ## Project Structure
 - cam.py: Main script for running real-time soda can detection using YOLOv8.
 - best.pt: YOLO model to detect soda cans.
-  * Model was trained using Roboflow
+  * Model was trained using Roboflow: https://app.roboflow.com/erasmus-eo69k/soda-cans-vivjo/2
   * Background images with no soda cans were added to avoid false positives.
 
 !! A video to proof the program working can be found on the folder (Proof.mp4)
