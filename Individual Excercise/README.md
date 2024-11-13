@@ -1,5 +1,5 @@
 # YOLOv8 Soda Can Detection
-This project uses a video feed and a YOLOv8 model to detect soda cans in real time. The application uses the ultralytics package for object recognition using YOLO and OpenCV for video recording and display.
+This project uses a video feed and a YOLOv8 model to detect soda cans in real time. The program uses the ultralytics package for object recognition using YOLO and OpenCV for video recording and display.
 
 ## You will need 
 - Python 
@@ -7,7 +7,7 @@ This project uses a video feed and a YOLOv8 model to detect soda cans in real ti
 - Ultralytics YOLO
 
 ## How to use it
-1. Ensure the YOLO model file (best_mat.pt) is available in the same directory. 
+1. Ensure the YOLO model file (best.pt) is available in the same directory. 
 
 2. Run the script directly from visual studio or similar or with: python cam.py
 
@@ -21,7 +21,7 @@ This project uses a video feed and a YOLOv8 model to detect soda cans in real ti
 
 ## Project Structure
 - cam.py: Main script for running real-time soda can detection using YOLOv8.
-- best_mat.pt: YOLO model to detect soda cans.
+- best.pt: YOLO model to detect soda cans.
   * Model was trained using Roboflow
   * Background images with no soda cans were added to avoid false positives.
 
