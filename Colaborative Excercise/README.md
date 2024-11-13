@@ -29,3 +29,5 @@ This project uses a video feed and a YOLOv8 model to detect objects. There were 
   * Model was trained using Roboflow
   * Background images with no soda cans were added to avoid false positives.
 
+
+!! A video to proof the program working can be found on the folder (Leftmost object coordinates.mp4)
