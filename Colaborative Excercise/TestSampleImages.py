@@ -1,5 +1,5 @@
 import cv2
-import socket
+# import socket
 from ultralytics import YOLO
 
 def detection(model, image_path, host='192.168.0.107', port=5000):
@@ -15,8 +15,8 @@ def detection(model, image_path, host='192.168.0.107', port=5000):
     print("Press 'p' to analyze the image or 'q' to exit.")
 
     # Client socket configuration
-    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.connect((host, port))
+    # client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # client_socket.connect((host, port))
 
     try:
         while True:
@@ -51,7 +51,7 @@ def detection(model, image_path, host='192.168.0.107', port=5000):
                         coordinates = f"{x},{y}"
                         
                         # Send coordinates to the server
-                        client_socket.sendall(coordinates.encode())
+                        # client_socket.sendall(coordinates.encode())
 
                         # Confirm the coordinates sent
                         print("Sent coordinates:", coordinates)
@@ -70,7 +70,7 @@ def detection(model, image_path, host='192.168.0.107', port=5000):
     finally:
         # Release resources
         cv2.destroyAllWindows()
-        client_socket.close()
+        # client_socket.close()
         print("Client connection closed.")
 
 # Run detection with server communication
